@@ -6,7 +6,7 @@ Dashboard e materiais da pesquisa **Segurança Digital entre Estudantes Universi
 
 ## Acessar o dashboard
 
-**Questionário:** https://dalt1x.github.io/Seguranca-Digital/.
+**Dashboard:** https://dalt1x.github.io/Seguranca-Digital/.
 
 Ele contém quatro indicadores e cinco gráficos interativos sobre hábitos declarados de segurança digital. Funciona sem servidor, sem banco externo e sem bibliotecas JavaScript adicionais.
 
