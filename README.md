@@ -23,44 +23,6 @@ Ele contém quatro indicadores e cinco gráficos interativos sobre hábitos decl
 | Atribuíram nota 1 ou 2 ao conhecimento sobre LGPD | 75,7% |
 | Não souberam associar segurança digital a ODS | 66,7% (n=36) |
 
-**Atenção:** pesquisa exploratória de conveniência. Só 7 respondentes assinalaram vínculo estudantil, 1 marcou docente e 29 marcaram “Outro”. Os percentuais descrevem o grupo pesquisado, não toda a comunidade universitária.
-
-## Estrutura do repositório
-
-```text
-index.html                                Site para GitHub Pages (raiz)
-README.md                                 Esta apresentação
-.nojekyll                                 Configuração de publicação estática
-docs/
-  Artigo_Seguranca_Digital.pdf            Artigo enviado
-  Infografico.pdf                         Infográfico enviado
-  Plano_de_Pesquisa.md                    Plano estruturado
-  Relatorio_de_Devolutiva.pdf             Relatório educativo de 5 páginas
-  Consentimento_e_Etica.md                Consentimento descrito no instrumento
-  Portfolio_versao_em_desenvolvimento.pdf Documento original, ainda incompleto
-  evidencias/README.md                    Evidências reais ainda pendentes
-dados/
-  brutos/README.md                        Por que a base individual é restrita
-  tratados/dados_agregados.csv            Resultados dos 5 gráficos
-  tratados/contagens_por_pergunta.csv     Resultados de todas as perguntas
-  dicionario_variaveis.csv                Definição das variáveis
-  procedimentos_limpeza.md                Conferência dos dados
-analise/
-  README.md                               Análise e instruções
-  METODOLOGIA_E_DADOS.md                  Indicadores, fórmulas e limites
-  verificar_dados.py                      Conferência matemática dos CSVs
-  gerar_figuras.py                        Gráficos reproduzíveis
-  requirements.txt                        Dependência opcional
-figuras/
-  01_autenticacao_2fa.png                 Gráfico 1
-  02_reutilizacao_senhas.png              Gráfico 2
-  03_verificacao_links.png                Gráfico 3
-  04_conhecimento_lgpd.png                Gráfico 4
-  05_associacao_ods.png                   Gráfico 5
-instrumento/
-  Questionario.pdf                        Perguntas e consentimento
-```
-
 ## Fontes e tratamento dos dados
 
 A equipe forneceu uma planilha com **37 respostas consentidas**. O cálculo usa porcentagens arredondadas a uma casa decimal, com n=36 somente na questão de ODS. A data de referência é **08/11/2026**. Os dados são um recorte estático, não um painel ao vivo.
