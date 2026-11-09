@@ -6,7 +6,7 @@ Dashboard e materiais da pesquisa **Segurança Digital entre Estudantes Universi
 
 ## Acessar o dashboard
 
-O site é o arquivo [`index.html`](index.html). Após habilitar o GitHub Pages, o endereço público seguirá o formato `https://SEU-USUARIO.github.io/NOME-DO-REPOSITORIO/`.
+**Questionário:** https://dalt1x.github.io/Seguranca-Digital/.
 
 Ele contém quatro indicadores e cinco gráficos interativos sobre hábitos declarados de segurança digital. Funciona sem servidor, sem banco externo e sem bibliotecas JavaScript adicionais.
 
