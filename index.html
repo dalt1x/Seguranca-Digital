@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Dashboard da Universidade Iguaçu sobre segurança digital, com cinco gráficos e resultados agregados de 37 participantes.">
+  <title>Segurança digital em foco | Universidade Iguaçu</title>
+  <style>
+    :root{--navy:#142236;--ink:#1b2a3a;--muted:#637386;--muted2:#8290a1;--paper:#f5f7fa;--white:#fff;--line:#e7ecf0;--teal:#168a87;--teal-light:#e5f6f3;--orange:#db8547;--orange-light:#fff3e8;--indigo:#5265bb;--indigo-light:#eef1ff;--slate:#8394aa;--shadow:0 10px 30px rgba(15,32,55,.045);--radius:19px}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
+    button{font:inherit}
+    a{color:inherit}
+    a:focus-visible{outline:3px solid #51b9af;outline-offset:4px;border-radius:5px}
+    .skip-link{position:absolute;top:-100px;left:16px;z-index:100;padding:10px 15px;background:#fff;color:#142236;border-radius:8px;font-size:13px;font-weight:700}.skip-link:focus{top:10px}
+
+    .shell{max-width:1190px;margin:auto;padding:26px 26px 72px}
+    .topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:23px;gap:15px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:14px;letter-spacing:.015em}
+    .brand-mark{width:37px;height:37px;display:grid;place-items:center;background:var(--navy);color:white;border-radius:12px;font-size:12px;letter-spacing:-.05em}
+    .brand span:last-child{font-weight:650;color:#304257}
+    .top-meta{font-size:12px;color:var(--muted);font-weight:600}
+    .hero{position:relative;overflow:hidden;border-radius:23px;color:#fff;background:linear-gradient(115deg,#14263c 3%,#1a3e52 68%,#17515a 100%);padding:39px 44px 37px;min-height:257px;box-shadow:0 16px 38px rgba(25,48,68,.14)}
+    .hero:after{content:"";position:absolute;width:360px;height:360px;border-radius:50%;border:1px solid rgba(255,255,255,.1);right:-65px;top:-105px;box-shadow:0 0 0 47px rgba(255,255,255,.023),0 0 0 94px rgba(255,255,255,.02);pointer-events:none}
+    .hero-content{position:relative;z-index:2;max-width:725px}
+    .eyebrow{font-weight:800;font-size:10px;letter-spacing:.21em;text-transform:uppercase;color:#8de2cb;display:flex;align-items:center;gap:9px}
+    .eyebrow:before{content:"";display:block;width:18px;height:2px;background:#8de2cb}
+    h1{font-size:clamp(27px,4vw,43px);margin:18px 0 12px;font-weight:750;letter-spacing:-.045em;line-height:1.1}
+    .hero p{max-width:590px;color:#c4d4df;margin:0;font-size:14px;line-height:1.65}
+    .hero-facts{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:23px}
+    .hero-cta{display:inline-flex;align-items:center;gap:9px;margin-top:22px;padding:11px 16px;border-radius:10px;background:#9de3d0;color:#163348;text-decoration:none;font-size:12px;font-weight:800;box-shadow:0 6px 16px rgba(3,18,26,.12);transition:background .2s,transform .2s}
+    .hero-cta:hover{background:#baf3e2;transform:translateY(-1px)}
+    .hero-cta svg{width:15px;height:15px;flex:0 0 15px}
+    .fact{border:1px solid rgba(226,251,251,.22);padding:6px 11px;border-radius:999px;color:#d7e7ee;font-size:11px;font-weight:650;background:rgba(255,255,255,.035)}
+    .hero-decoration{position:absolute;right:49px;bottom:38px;width:215px;height:135px;opacity:.84;z-index:1}
+    .toolbar{display:flex;justify-content:space-between;align-items:center;margin:35px 0 19px;gap:14px;flex-wrap:wrap}
+    .section-label{margin:0 0 3px;font-weight:760;font-size:20px;letter-spacing:-.035em;color:var(--navy)}
+    .section-sub{margin:0;font-size:12px;color:var(--muted)}
+    .actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .btn{border:1px solid #dce5eb;border-radius:10px;background:white;padding:9px 13px;color:#334b5b;font-size:11.5px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .2s}
+    .btn:hover{background:#e9f6f5;border-color:#b8dcd7;transform:translateY(-1px)}.btn svg{width:14px;height:14px}
+    .kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .kpi{position:relative;overflow:hidden;background:white;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:var(--radius);padding:20px 20px 21px;min-height:174px}
+    .kpi-top{display:flex;justify-content:space-between;align-items:center}
+    .kpi-tag{font-size:10px;color:var(--muted);font-weight:760;letter-spacing:.06em;text-transform:uppercase}
+    .kpi-icon{width:32px;height:32px;display:grid;place-items:center;border-radius:10px}
+    .kpi-icon svg{height:17px;width:17px}.kpi-icon.c1{background:var(--orange-light);color:var(--orange)}.kpi-icon.c2{background:#fcecec;color:#cf7276}.kpi-icon.c3{background:var(--teal-light);color:var(--teal)}.kpi-icon.c4{background:var(--indigo-light);color:var(--indigo)}
+    .number{font-size:37px;letter-spacing:-.06em;font-weight:760;line-height:1.05;margin:12px 0 8px;color:var(--navy)}
+    .number small{font-size:16px;color:#91a0ad;letter-spacing:-.01em}
+    .kpi-desc{font-size:12px;font-weight:550;color:#536477;max-width:200px;margin:0;line-height:1.45}
+    .signal{margin:16px 0 33px;background:#eaf4f2;border:1px solid #d4e9e4;border-radius:13px;padding:13px 16px;display:flex;gap:12px;align-items:flex-start;color:#315f5a;font-size:12px;line-height:1.5}
+    .signal strong{font-weight:760}
+    .signal-icon{width:25px;height:25px;flex:0 0 25px;background:#d0ebe4;color:#187b76;border-radius:8px;display:grid;place-items:center}
+    .dashboard-heading{display:flex;align-items:end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:0 0 19px}
+    .tabs{display:inline-flex;gap:4px;background:#e9eef2;border:1px solid #e1e7ed;padding:4px;border-radius:11px}
+    .tab{border:0;background:transparent;padding:8px 13px;font-size:11px;font-weight:750;cursor:pointer;color:#728293;border-radius:8px;white-space:nowrap;transition:background .15s}
+    .tab[aria-selected="true"]{background:white;color:var(--navy);box-shadow:0 2px 8px rgba(16,35,50,.08)}.tab:focus-visible,.btn:focus-visible{outline:3px solid #51b9af;outline-offset:2px}
+    .group-title{font-size:13px;text-transform:uppercase;letter-spacing:.105em;font-weight:800;color:#7c8c9b;margin:25px 0 12px;display:flex;gap:10px;align-items:center}
+    .group-title:after{content:"";height:1px;background:#e2e7eb;flex:1}
+    .charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .chart-card{background:white;border:1px solid var(--line);border-radius:var(--radius);padding:22px 23px 20px;box-shadow:var(--shadow);min-width:0}
+    .chart-card.large{grid-column:span 1}
+    .chart-head{display:flex;align-items:start;justify-content:space-between;gap:14px;min-height:61px}
+    .chart-head h3{margin:0 0 4px;font-size:15px;font-weight:790;letter-spacing:-.02em;color:var(--navy)}
+    .chart-head p{margin:0;font-size:11px;color:var(--muted);line-height:1.4}
+    .n-chip{color:#728396;flex:0 0 auto;border:1px solid #e5ebef;background:#f7f9fa;font-weight:750;border-radius:8px;font-size:10px;padding:5px 7px}
+    .bars{display:grid;gap:15px;margin-top:19px}
+    .bar-line{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto 9px;column-gap:12px;row-gap:7px;align-items:center}
+    .bar-label{font-size:11px;color:#4d6071;font-weight:650;min-width:0}
+    .bar-value{font-size:11px;color:#364a5e;font-weight:780;font-variant-numeric:tabular-nums;white-space:nowrap}
+    .bar-value span{font-size:10px;color:#94a0ac;margin-left:5px;font-weight:600}
+    .track{height:9px;background:#eef2f5;border-radius:20px;overflow:hidden;grid-column:span 2}
+    .fill{height:100%;border-radius:20px;max-width:100%;min-width:0;display:block;transition:width .65s cubic-bezier(.23,1,.32,1)}
+    .bar-line:has(.fill:hover) .bar-label{color:#111e30}
+    .foot-note{font-size:10.5px;color:#8693a1;line-height:1.5;margin:18px 0 0;padding-top:13px;border-top:1px solid #f0f2f5}
+    .advice-card{background:#f9fcfb;border-color:#dcece8}
+    .advice-head{display:flex;justify-content:space-between;align-items:center;gap:9px}
+    .advice-tag{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#30827a;font-weight:800}
+    .advice-list{display:grid;gap:14px;margin-top:19px}
+    .advice-item{display:flex;align-items:start;gap:11px;color:#486072;font-size:11px;line-height:1.45}
+    .advice-item b{color:#203e4b;font-size:11px}
+    .advice-index{height:25px;width:25px;flex:0 0 25px;display:grid;place-items:center;border-radius:8px;background:#dfefeb;color:#238277;font-weight:850;font-size:11px}
+    .mini-insight{display:flex;align-items:center;gap:9px;color:#526779;font-size:11px;margin-top:16px;padding:10px 11px;border-radius:10px;background:#f7f9fb}
+    .mini-insight strong{color:#254357}
+    .sq{height:9px;width:9px;border-radius:3px;flex:0 0 9px}
+    [data-panel][hidden],.group-title[hidden]{display:none!important}
+    .methodology{display:grid;grid-template-columns:1.15fr .85fr;gap:17px;margin-top:29px}
+    .note-card{border:1px solid #dfe7ec;border-radius:16px;padding:21px 22px;background:#eef2f5}
+    .note-card.strong{background:#e9f4f2;border-color:#d4eae6}
+    .note-card h3{margin:0 0 9px;font-size:13px;letter-spacing:-.01em;color:#27475a}
+    .note-card p{margin:0;font-size:11px;line-height:1.75;color:#526777}
+    .resources{margin-top:28px;border:1px solid var(--line);background:var(--white);border-radius:var(--radius);padding:23px 24px;box-shadow:var(--shadow)}
+    .resources-head{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+    .resources-head h2{margin:0;font-size:17px;letter-spacing:-.025em;color:var(--navy)}
+    .resources-head p{margin:5px 0 0;font-size:11px;color:var(--muted)}
+    .resources-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+    .resource-link{display:flex;flex-direction:column;gap:5px;text-decoration:none;padding:16px;border:1px solid #e5eaef;border-radius:13px;background:#fafbfc;transition:background .2s,border-color .2s}
+    .resource-link:hover{background:#f0f9f7;border-color:#b7dcd6}
+    .resource-link strong{display:flex;justify-content:space-between;align-items:center;gap:7px;color:#2a4758;font-size:12px}
+    .resource-link span{color:#758799;font-size:10.5px;line-height:1.5}
+    .source-warning{font-size:10.5px;color:#728494;margin:14px 0 0;line-height:1.55}
+    .bottom{margin-top:25px;display:flex;justify-content:space-between;align-items:center;color:#758596;font-size:10.5px;gap:12px;flex-wrap:wrap}
+    .bottom strong{color:#42586c}
+    .bottom b{color:#63788a}
+    @media (max-width:960px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-decoration{opacity:.24}}
+    @media (max-width:720px){.resources-grid{grid-template-columns:1fr}.resources{padding:20px 18px}.shell{padding:17px 14px 50px}.top-meta{display:none}.hero{min-height:unset;padding:31px 26px}.hero p{font-size:13px}.hero-decoration{right:-60px}.kpis{gap:10px}.kpi{padding:17px 15px;min-height:154px}.number{font-size:32px}.kpi-desc{font-size:11px}.charts,.methodology{grid-template-columns:1fr}.chart-card{padding:19px}.toolbar{margin-top:27px}.dashboard-heading{align-items:start}.tabs{overflow-x:auto;max-width:100%}}
+    @media (max-width:430px){.hero{padding:29px 23px}.fact{font-size:10px}.kpi-tag{font-size:9px}.number{font-size:29px}.kpi-icon{width:28px;height:28px}.tab{font-size:10px;padding:8px}.actions{width:100%}.actions .btn{flex:1;justify-content:center}}
+    @media print{body{background:white}.shell{max-width:100%;padding:0}.hero{color:#12293b;background:#edf5f4!important;box-shadow:none;border:1px solid #cedfdc}.hero p{color:#536777}.eyebrow{color:#277d77}.fact{color:#405b6b;border-color:#bdd1ca}.hero-decoration,.actions,.tabs,.hero-cta{display:none!important}.kpi,.chart-card{box-shadow:none;break-inside:avoid}.charts{grid-template-columns:1fr 1fr}.methodology{break-inside:avoid}.bottom{margin-top:18px}[data-panel][hidden],.group-title[hidden]{display:block!important}.chart-card{padding:14px}.chart-head{min-height:51px}.bars{gap:11px;margin-top:12px}.signal{break-inside:avoid}.hero{padding:20px 26px;min-height:0}.number{font-size:30px}.kpi{min-height:137px}h1{font-size:32px}.toolbar{margin:20px 0 10px}.group-title{margin:18px 0 10px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fill,.btn{transition:none}}
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#highlights-title">Ir para os resultados</a>
+  <main class="shell">
+    <header class="topline">
+      <div class="brand"><div class="brand-mark" aria-hidden="true">SD.</div><span>Universidade Iguaçu <span style="color:#8b9ba9;font-weight:500">/ UNIG</span></span></div>
+      <span class="top-meta">CIÊNCIA DA COMPUTAÇÃO · TEMA INTEGRADOR VII · 2026</span>
+    </header>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-content">
+        <div class="eyebrow">Pesquisa acadêmica · Universidade Iguaçu</div>
+        <h1 id="page-title">Segurança digital<br>em foco<span style="color:#83dfc3">.</span></h1>
+        <p>O que os participantes da pesquisa revelam sobre senhas, autenticação, links suspeitos e proteção de dados pessoais?</p>
+        <div class="hero-facts"><span class="fact">37 respostas voluntárias</span><span class="fact">5 gráficos principais</span><span class="fact">ODS 4 e 16</span></div>
+        <a class="hero-cta" href="https://forms.gle/LN3Hjy1jku2CddK28" target="_blank" rel="noopener noreferrer">Acessar questionário <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+      </div>
+      <svg class="hero-decoration" viewBox="0 0 235 155" fill="none" aria-hidden="true"><path d="M7 135H230M10 115H230M10 93H230M10 69H230M10 45H230" stroke="#a4e0d9" stroke-opacity=".11"/><path d="M15 117L57 92L97 101L139 48L185 68L224 25" stroke="#80e9cc" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 117L57 92L97 101L139 48L185 68L224 25V138H15V117Z" fill="url(#heroGr)" opacity=".6"/><circle cx="139" cy="48" r="6" fill="#83e5cc" stroke="#19445a" stroke-width="3"/><circle cx="224" cy="25" r="6" fill="#83e5cc" stroke="#19445a" stroke-width="3"/><defs><linearGradient id="heroGr" x1="110" y1="20" x2="110" y2="138" gradientUnits="userSpaceOnUse"><stop stop-color="#79d8c2" stop-opacity=".4"/><stop offset="1" stop-color="#79d8c2" stop-opacity="0"/></linearGradient></defs></svg>
+    </section>
+    <section aria-labelledby="highlights-title">
+      <div class="toolbar">
+        <div><h2 class="section-label" id="highlights-title">Panorama dos resultados</h2><p class="section-sub">Indicadores calculados com dados da planilha da pesquisa, conferidos em 08/11/2026. Atualização manual.</p></div>
+        <div class="actions"><button class="btn" id="downloadBtn" type="button" aria-label="Baixar dados agregados em CSV"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>Baixar dados CSV</button><button class="btn" id="printBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-4a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v4a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v7H6z"/></svg>Salvar como PDF</button></div>
+      </div>
+      <div class="kpis">
+        <article class="kpi"><div class="kpi-top"><span class="kpi-tag">Senhas</span><span class="kpi-icon c1"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12 21 2l2 2-3 3 2 2-3 3-2-2-3 3"/></svg></span></div><div class="number">97,3%</div><p class="kpi-desc">reutilizam senhas às vezes ou frequentemente</p></article>
+        <article class="kpi"><div class="kpi-top"><span class="kpi-tag">Links suspeitos</span><span class="kpi-icon c2"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><path d="M12 2 2 20h20L12 2Z"/><path d="M12 9v4m0 3v.5"/></svg></span></div><div class="number">67,6%</div><p class="kpi-desc">nunca verificam links e remetentes antes de clicar</p></article>
+        <article class="kpi"><div class="kpi-top"><span class="kpi-tag">Autenticação 2FA</span><span class="kpi-icon c3"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 1 1 8 0v3m-4 4v3"/></svg></span></div><div class="number">45,9%</div><p class="kpi-desc">não sabem o que é autenticação em duas etapas</p></article>
+        <article class="kpi"><div class="kpi-top"><span class="kpi-tag">Conhecimento LGPD</span><span class="kpi-icon c4"><svg fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span></div><div class="number">1,73<small> / 5</small></div><p class="kpi-desc">média da autoavaliação sobre a LGPD</p></article>
+      </div>
+      <div class="signal"><span class="signal-icon" aria-hidden="true">✦</span><span><strong>Principal alerta:</strong> 36 de 37 participantes relataram reutilizar senhas em alguma frequência. Os resultados apontam oportunidades de orientação sobre senhas exclusivas, 2FA e identificação de golpes.</span></div>
+    </section>
+    <section aria-labelledby="charts-title">
+      <div class="dashboard-heading"><div><h2 class="section-label" id="charts-title">Explore os gráficos</h2><p class="section-sub">Cada barra indica o percentual de respostas válidas na respectiva pergunta.</p></div><div class="tabs" role="tablist" aria-label="Visualização dos gráficos"><button class="tab" type="button" role="tab" data-tab="all" aria-selected="true">Todos</button><button class="tab" type="button" role="tab" data-tab="practice" aria-selected="false">Hábitos de proteção</button><button class="tab" type="button" role="tab" data-tab="education" aria-selected="false">Conhecimento e ODS</button></div></div>
+      <h3 class="group-title" data-group="practice">Hábitos de proteção</h3>
+      <div class="charts" data-panel="practice">
+        <article class="chart-card"><div class="chart-head"><div><h3>Autenticação em duas etapas</h3><p>Uso declarado de 2FA nas contas pessoais</p></div><span class="n-chip">n = 37</span></div><div class="bars" id="chart-2fa"></div><p class="foot-note">A maior categoria informou desconhecer o recurso.</p></article>
+        <article class="chart-card"><div class="chart-head"><div><h3>Reutilização de senhas</h3><p>Frequência de uso da mesma senha em serviços diferentes</p></div><span class="n-chip">n = 37</span></div><div class="bars" id="chart-passwords"></div><p class="foot-note">Apenas uma pessoa afirmou nunca reutilizar senhas.</p></article>
+        <article class="chart-card"><div class="chart-head"><div><h3>Verificação de links</h3><p>Conferência de remetentes e links antes do clique</p></div><span class="n-chip">n = 37</span></div><div class="bars" id="chart-links"></div><p class="foot-note">O comportamento foi autodeclarado, não observado.</p></article>
+        <article class="chart-card advice-card"><div class="chart-head"><div><h3>O que fazer com esses dados?</h3><p>Três orientações práticas do infográfico educativo</p></div><span class="n-chip">Guia rápido</span></div><div class="advice-list"><div class="advice-item"><span class="advice-index">01</span><span><b>Ative a autenticação em duas etapas</b><br>Inclua uma verificação adicional no acesso às contas.</span></div><div class="advice-item"><span class="advice-index">02</span><span><b>Use uma senha diferente por serviço</b><br>Um gerenciador pode ajudar a armazená-las.</span></div><div class="advice-item"><span class="advice-index">03</span><span><b>Confira os links antes de clicar</b><br>Desconfie de mensagens urgentes e confirme a origem.</span></div></div></article>
+      </div>
+      <h3 class="group-title" data-group="education">Conhecimento e percepção</h3>
+      <div class="charts" data-panel="education">
+        <article class="chart-card"><div class="chart-head"><div><h3>Conhecimento sobre a LGPD</h3><p>Autoavaliação de 1 (nenhum) a 5 (alto)</p></div><span class="n-chip">n = 37</span></div><div class="bars" id="chart-lgpd"></div><div class="mini-insight"><span class="sq" style="background:var(--indigo)"></span><span><strong>75,7%</strong> marcaram notas 1 ou 2.</span></div></article>
+        <article class="chart-card"><div class="chart-head"><div><h3>Segurança digital e ODS</h3><p>Objetivo de Desenvolvimento Sustentável mais associado ao tema</p></div><span class="n-chip">n = 36</span></div><div class="bars" id="chart-ods"></div><p class="foot-note">Esta pergunta teve 36 respostas válidas, uma a menos que as demais.</p></article>
+      </div>
+    </section>
+    <section class="methodology" aria-label="Informações sobre os dados">
+      <aside class="note-card strong"><h3>Como interpretar estes resultados</h3><p>Pesquisa quantitativa, exploratório-descritiva, com participação voluntária e amostragem por conveniência. Os percentuais descrevem exclusivamente o grupo pesquisado e não permitem generalizações para todos os estudantes universitários. O formulário perguntou sobre hábitos declarados, sem verificar as configurações reais das contas.</p></aside>
+      <aside class="note-card"><h3>Quem respondeu?</h3><p>Foram registrados 37 participantes. Entre as 36 pessoas não docentes, 7 declararam vínculo estudantil (3 da UNIG e 4 de outras instituições) e 29 selecionaram “Outro”. Por isso, os resultados não representam uma amostra formada apenas por universitários.</p></aside>
+    </section>
+    <section class="resources" aria-label="Fontes e materiais da pesquisa">
+      <div class="resources-head"><div><h2>Fontes e materiais da pesquisa</h2><p>Consulte o instrumento, a origem dos resultados e os dados agrupados.</p></div><span class="n-chip">Conferência: 08/11/2026</span></div>
+      <div class="resources-grid">
+        <a class="resource-link" href="https://forms.gle/LN3Hjy1jku2CddK28" target="_blank" rel="noopener noreferrer"><strong>Questionário original <span aria-hidden="true">↗</span></strong><span>Google Forms · participação voluntária</span></a>
+        <a class="resource-link" href="docs/Artigo_Seguranca_Digital.pdf" target="_blank" rel="noopener noreferrer"><strong>Artigo da pesquisa <span aria-hidden="true">↗</span></strong><span>PDF com método, resultados e referências</span></a>
+        <a class="resource-link" href="docs/Relatorio_de_Devolutiva.pdf" target="_blank" rel="noopener noreferrer"><strong>Relatório de devolutiva <span aria-hidden="true">↗</span></strong><span>PDF educativo de 5 páginas, pronto para divulgação</span></a>
+        <a class="resource-link" href="docs/Infografico.pdf" target="_blank" rel="noopener noreferrer"><strong>Infográfico educativo <span aria-hidden="true">↗</span></strong><span>Dicas de segurança digital e QR Code</span></a>
+        <a class="resource-link" href="dados/tratados/dados_agregados.csv" download><strong>Dados agregados <span aria-hidden="true">↓</span></strong><span>CSV com contagens e percentuais, sem registros individuais</span></a>
+      </div>
+      <p class="source-warning">Nota de privacidade: a planilha original contém respostas individuais. Mantenha as permissões restritas ao grupo e à orientação docente; compartilhe publicamente apenas os dados agregados. O painel é uma fotografia da coleta, sem sincronização automática com a planilha.</p>
+    </section>
+    <footer class="bottom"><span><strong>Universidade Iguaçu (UNIG)</strong> · Tema Integrador VII · Ciência da Computação · 2026</span><span><strong>Autores:</strong> Dalton, Kaua e Caroline</span></footer>
+  </main>
+  <script>
+    'use strict';
+    /* Contagens verificadas com a planilha de respostas em 08/11/2026. Somente agregados; não há importação da planilha em tempo real. */
+    const charts = {
+      'chart-2fa': {n:37, color:'#168a87', items:[['Não sei o que é',17],['Uso em algumas contas',13],['Não utilizo',4],['Todas ou quase todas',3]]},
+      'chart-passwords': {n:37, color:'#db8547', items:[['Frequentemente',21],['Às vezes',15],['Nunca',1]]},
+      'chart-links': {n:37, color:'#cf7276', items:[['Nunca',25],['Às vezes',7],['Sempre',5]]},
+      'chart-lgpd': {n:37, color:'#5265bb', items:[['Nota 1',21],['Nota 2',7],['Nota 3',7],['Nota 4',2],['Nota 5',0]]},
+      'chart-ods': {n:36, color:'#168a87', items:[['Não sei',24],['ODS 16',6],['Ambos (ODS 4 e 16)',6],['ODS 4',0]]}
+    };
+    const fmt = n => n.toFixed(1).replace('.',',') + '%';
+    for (const [id, series] of Object.entries(charts)) {
+      const root = document.getElementById(id);
+      series.items.forEach(([name, count]) => {
+        const pct = 100*count/series.n;
+        const line = document.createElement('div'); line.className='bar-line';
+        const label = document.createElement('span'); label.className='bar-label'; label.textContent=name;
+        const value = document.createElement('span'); value.className='bar-value'; value.textContent=fmt(pct);
+        const small=document.createElement('span'); small.textContent=count+' '+(count===1?'pessoa':'pessoas');value.appendChild(small);
+        const track=document.createElement('div');track.className='track';track.setAttribute('role','img');track.setAttribute('aria-label',name+': '+count+' de '+series.n+' respostas, '+fmt(pct));
+        const bar=document.createElement('span');bar.className='fill';bar.style.width=pct+'%';bar.style.background=series.color;bar.title=name+': '+fmt(pct)+' ('+count+'/'+series.n+')';
+        track.appendChild(bar);line.append(label,value,track);root.appendChild(line);
+      });
+    }
+    function selectTab(selected){
+      document.querySelectorAll('[data-tab]').forEach(btn => btn.setAttribute('aria-selected',String(btn.dataset.tab===selected)));
+      for(const group of ['practice','education']){
+        document.querySelector('[data-panel="'+group+'"]').hidden=selected!=='all'&&selected!==group;
+        document.querySelector('[data-group="'+group+'"]').hidden=selected!=='all'&&selected!==group;
+      }
+    }
+    document.querySelectorAll('[data-tab]').forEach(btn => btn.addEventListener('click',()=>selectTab(btn.dataset.tab)));
+    document.getElementById('printBtn').addEventListener('click',()=>window.print());
+    document.getElementById('downloadBtn').addEventListener('click',()=>{
+      const lines=['indicador,categoria,quantidade,total_respostas,percentual'];
+      const names={'chart-2fa':'Autenticação 2FA','chart-passwords':'Reutilização de senhas','chart-links':'Verificação de links','chart-lgpd':'Conhecimento LGPD','chart-ods':'Associação aos ODS'};
+      for(const [id,series] of Object.entries(charts)){
+        for(const [category,count] of series.items){
+          const values=[names[id],category,count,series.n,(100*count/series.n).toFixed(1)];
+          lines.push(values.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(','));
+        }
+      }
+      const blob=new Blob(['\uFEFF'+lines.join('\r\n')],{type:'text/csv;charset=utf-8;'});
+      const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='seguranca_digital_dados_agregados.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    });
+  </script>
+</body>
+</html>

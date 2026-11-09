@@ -1,0 +1,14 @@
+﻿id_variavel,pergunta_original,tipo,valores_permitidos,n_respostas_validas,regra_de_tratamento
+faixa_etaria,Qual é sua faixa etária?,Categórica ordinal,18 a 24 | 25 a 34 | 35 ou mais | Prefiro não informar,37,37 respostas com consentimento; contagem agregada
+vinculo,Qual seu vínculo?,Categórica nominal,Estudante UNIG | Estudante outra instituição | Docente | Outro,37,37 respostas com consentimento; contagem agregada
+area_ti,Qual área de TI mais lhe interessa?,Categórica nominal,Segurança digital | IA | Dados | Redes | Desenvolvimento | Outro,37,37 respostas com consentimento; contagem agregada
+uso_2fa,Em quantas contas você usa autenticação em duas etapas (2FA)?,Categórica nominal,Em todas ou quase todas | Em algumas | Não utilizo | Não sei o que é,37,37 respostas com consentimento; contagem agregada
+reutilizacao_senhas,Você reutiliza a mesma senha em diferentes serviços?,Categórica ordinal,Nunca | Às vezes | Frequentemente,37,37 respostas com consentimento; contagem agregada
+gerenciador_senhas,Usa um gerenciador de senhas?,Categórica nominal,Sim | Não | Não sei o que é,37,37 respostas com consentimento; contagem agregada
+atualizacao,Como costuma atualizar aplicativos e sistemas?,Categórica ordinal,Automáticas | Manuais frequentes | Raramente,37,37 respostas com consentimento; contagem agregada
+verificacao_links,Você confere remetentes e links antes de clicar?,Categórica ordinal,Sempre | Às vezes | Nunca,37,37 respostas com consentimento; contagem agregada
+risco_digital,Qual risco digital mais preocupa você?,Categórica nominal,Golpes/phishing | Vazamento de dados | Invasão de contas | Desinformação | Outros,37,37 respostas com consentimento; contagem agregada
+conhecimento_lgpd,Como avalia seu conhecimento sobre a LGPD?,Ordinal (escala 1-5),1 | 2 | 3 | 4 | 5,37,37 respostas com consentimento; contagem agregada
+uso_nuvem,Com que frequência utiliza serviços em nuvem?,Categórica ordinal,Todos os dias | Às vezes | Nunca/Não sei,37,37 respostas com consentimento; contagem agregada
+associacao_ods,Qual ODS você associa mais à segurança digital?,Categórica nominal,ODS 4 | ODS 16 | Ambos | Não sei,36,1 resposta em branco; percentual usa n=36
+consentimento,Consentimento obrigatório,Categórica nominal,Concordo em participar da pesquisa. | Não concordo (encerrar sem registrar respostas).,37,37 respostas com consentimento; contagem agregada

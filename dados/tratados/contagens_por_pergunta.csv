@@ -1,0 +1,50 @@
+﻿variavel,pergunta,categoria,quantidade,total_respostas_validas,percentual
+faixa_etaria,Qual é sua faixa etária?,18 a 24,10,37,27.0
+faixa_etaria,Qual é sua faixa etária?,25 a 34,24,37,64.9
+faixa_etaria,Qual é sua faixa etária?,35 ou mais,2,37,5.4
+faixa_etaria,Qual é sua faixa etária?,Prefiro não informar,1,37,2.7
+vinculo,Qual seu vínculo?,Estudante UNIG,3,37,8.1
+vinculo,Qual seu vínculo?,Estudante outra instituição,4,37,10.8
+vinculo,Qual seu vínculo?,Docente,1,37,2.7
+vinculo,Qual seu vínculo?,Outro,29,37,78.4
+area_ti,Qual área de TI mais lhe interessa?,Segurança digital,0,37,0.0
+area_ti,Qual área de TI mais lhe interessa?,IA,5,37,13.5
+area_ti,Qual área de TI mais lhe interessa?,Dados,2,37,5.4
+area_ti,Qual área de TI mais lhe interessa?,Redes,1,37,2.7
+area_ti,Qual área de TI mais lhe interessa?,Desenvolvimento,3,37,8.1
+area_ti,Qual área de TI mais lhe interessa?,Outro,26,37,70.3
+uso_2fa,Em quantas contas você usa autenticação em duas etapas (2FA)?,Em todas ou quase todas,3,37,8.1
+uso_2fa,Em quantas contas você usa autenticação em duas etapas (2FA)?,Em algumas,13,37,35.1
+uso_2fa,Em quantas contas você usa autenticação em duas etapas (2FA)?,Não utilizo,4,37,10.8
+uso_2fa,Em quantas contas você usa autenticação em duas etapas (2FA)?,Não sei o que é,17,37,45.9
+reutilizacao_senhas,Você reutiliza a mesma senha em diferentes serviços?,Nunca,1,37,2.7
+reutilizacao_senhas,Você reutiliza a mesma senha em diferentes serviços?,Às vezes,15,37,40.5
+reutilizacao_senhas,Você reutiliza a mesma senha em diferentes serviços?,Frequentemente,21,37,56.8
+gerenciador_senhas,Usa um gerenciador de senhas?,Sim,4,37,10.8
+gerenciador_senhas,Usa um gerenciador de senhas?,Não,15,37,40.5
+gerenciador_senhas,Usa um gerenciador de senhas?,Não sei o que é,18,37,48.6
+atualizacao,Como costuma atualizar aplicativos e sistemas?,Automáticas,14,37,37.8
+atualizacao,Como costuma atualizar aplicativos e sistemas?,Manuais frequentes,5,37,13.5
+atualizacao,Como costuma atualizar aplicativos e sistemas?,Raramente,18,37,48.6
+verificacao_links,Você confere remetentes e links antes de clicar?,Sempre,5,37,13.5
+verificacao_links,Você confere remetentes e links antes de clicar?,Às vezes,7,37,18.9
+verificacao_links,Você confere remetentes e links antes de clicar?,Nunca,25,37,67.6
+risco_digital,Qual risco digital mais preocupa você?,Golpes/phishing,3,37,8.1
+risco_digital,Qual risco digital mais preocupa você?,Vazamento de dados,3,37,8.1
+risco_digital,Qual risco digital mais preocupa você?,Invasão de contas,11,37,29.7
+risco_digital,Qual risco digital mais preocupa você?,Desinformação,3,37,8.1
+risco_digital,Qual risco digital mais preocupa você?,Outros,17,37,45.9
+conhecimento_lgpd,Como avalia seu conhecimento sobre a LGPD?,1,21,37,56.8
+conhecimento_lgpd,Como avalia seu conhecimento sobre a LGPD?,2,7,37,18.9
+conhecimento_lgpd,Como avalia seu conhecimento sobre a LGPD?,3,7,37,18.9
+conhecimento_lgpd,Como avalia seu conhecimento sobre a LGPD?,4,2,37,5.4
+conhecimento_lgpd,Como avalia seu conhecimento sobre a LGPD?,5,0,37,0.0
+uso_nuvem,Com que frequência utiliza serviços em nuvem?,Todos os dias,1,37,2.7
+uso_nuvem,Com que frequência utiliza serviços em nuvem?,Às vezes,8,37,21.6
+uso_nuvem,Com que frequência utiliza serviços em nuvem?,Nunca/Não sei,28,37,75.7
+associacao_ods,Qual ODS você associa mais à segurança digital?,ODS 4,0,36,0.0
+associacao_ods,Qual ODS você associa mais à segurança digital?,ODS 16,6,36,16.7
+associacao_ods,Qual ODS você associa mais à segurança digital?,Ambos,6,36,16.7
+associacao_ods,Qual ODS você associa mais à segurança digital?,Não sei,24,36,66.7
+consentimento,Consentimento obrigatório,Concordo em participar da pesquisa.,37,37,100.0
+consentimento,Consentimento obrigatório,Não concordo (encerrar sem registrar respostas).,0,37,0.0
